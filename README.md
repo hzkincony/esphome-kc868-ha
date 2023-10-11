@@ -1,1 +1,1 @@
-# KC868-HA
+# Esphome KC868-HA Component
