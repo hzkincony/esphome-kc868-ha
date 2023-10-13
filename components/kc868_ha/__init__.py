@@ -22,4 +22,6 @@ def to_code(config):
     u = yield cg.get_variable(config["uart_id"])
     var = cg.new_Pvariable(config[CONF_ID], u)
     yield cg.register_component(var, config)
+    cg.add(var.set_target_relay_controller_addr(config["target_relay_controller_addr"]))
+    cg.add(var.set_switch_adapter_addr(config["switch_adapter_addr"]))
     yield uart.register_uart_device(var, config)
