@@ -2,6 +2,12 @@
 
 # Core yaml
 ```yaml
+external_components:
+  - source:
+      type: git
+      url: https://github.com/hzkincony/esphome-kc868-ha
+      ref: v2.0.0
+
 uart:
   - id: myuart1
     tx_pin: 1
