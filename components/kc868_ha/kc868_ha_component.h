@@ -57,10 +57,10 @@ namespace esphome {
       KC868HaComponent(uart::UARTComponent *uartComponent) : UARTDevice(uartComponent) {
         this->uart_ = uartComponent;
       }
-      void set_target_relay_controller_addr(uint8_t addr) { this->target_relay_controller_addr_=addr; };
-      uint8_t get_target_relay_controller_addr() { return this->target_relay_controller_addr_; };
-      void set_switch_adapter_addr(uint8_t addr) { this->switch_adapter_addr_=addr; };
-      uint8_t get_switch_adapter_addr() { return this->switch_adapter_addr_; };
+      //void set_target_relay_controller_addr(uint8_t addr) { this->target_relay_controller_addr_=addr; };
+      //uint8_t get_target_relay_controller_addr() { return this->target_relay_controller_addr_; };
+      //void set_switch_adapter_addr(uint8_t addr) { this->switch_adapter_addr_=addr; };
+      //uint8_t get_switch_adapter_addr() { return this->switch_adapter_addr_; };
       void register_binary_sensor(kc868_ha::KC868HaBinarySensor *obj)  { this->binary_sensors_.push_back(obj); };
       void register_switch(kc868_ha::KC868HaSwitch *obj)  {
         obj->set_uart(this->uart_);
