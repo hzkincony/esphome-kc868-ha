@@ -196,4 +196,12 @@ binary_sensor:
   - platform: kc868_ha
     kc868_ha_id: kc868_ha_2
     bind_output: 10
-    name: "binary
+    name: "binary_sensor 10"
+  - platform: kc868_ha
+    kc868_ha_id: kc868_ha_2
+    bind_output: 11
+    name: "binary_sensor 11"
+  - platform: kc868_ha
+    kc868_ha_id: kc868_ha_2
+    bind_output: 12
+    name: "binary_sensor 12"
