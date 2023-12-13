@@ -39,6 +39,13 @@ namespace esphome {
           return;
         }
 
+        for (auto & element : this->binary_sensors_) {
+          ESP_LOGD(TAG, "dump kc868_ha config, target_relay_controller_addr=%d, switch_adapter_addr=%d, bind_output=%d", 
+              element->get_target_relay_controller_addr(),
+              element->get_switch_adapter_addr(),
+              element->get_bind_output());
+        }
+
         for (auto & element : this->binary_sensors_)
           {
             if (element->get_target_relay_controller_addr() == data[0] &&
