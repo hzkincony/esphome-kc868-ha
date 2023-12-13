@@ -25,9 +25,12 @@ namespace esphome {
           data[12],data[13],data[14],data[15],
           data[16],data[17],data[18]};
         uint16_t crc = crc16(crc_data, sizeof(crc_data));
+        uint8_t crc_h = static_cast<uint8_t>(crc & 0x00FF);
+        uint8_t crc_l = static_cast<uint8_t>((crc & 0xFF00) >> 8);
+        ESP_LOGD(TAG, "uart crc=%x:%x, calc crc=%x:%x", data[19], data[20], crc_h, crc_l);
 
-        if ((data[19] != (crc & 0x00FF)) && (data[19] != ((crc & 0xFF00) >> 8))) {
-          ESP_LOGD(TAG, "crc check failed. ignore data");
+        if (!(data[19] == crc_h && data[20] == crc_l)) {
+          ESP_LOGW(TAG, "crc check failed. ignore data");
 
           while(available() > 0) {
             read();
@@ -40,6 +43,11 @@ namespace esphome {
           {
             if (element->get_target_relay_controller_addr() == data[0] &&
                 element->get_switch_adapter_addr() == data[3]) {
+
+              ESP_LOGD(TAG, "found a kc868_ha board, target_relay_controller_addr=%d, switch_adapter_addr=%d, bind_output=%d", 
+              element->get_target_relay_controller_addr(),
+              element->get_switch_adapter_addr(),
+              element->get_bind_output());
               for (int i = 7; i <= 17; i += 2) {
                 if (data[i] == (element->get_bind_output() + 100)) {
                   if (data[i+1] == 1) {
@@ -104,10 +112,12 @@ namespace esphome {
       }
 
       uint16_t crc = crc16(data, sizeof(data));
+      uint8_t crc_h = static_cast<uint8_t>(crc & 0x00FF);
+      uint8_t crc_l = static_cast<uint8_t>((crc & 0xFF00) >> 8);
       uint8_t uart_data[23] = {data[0], data[1], data[2], data[3],
                                data[4], data[5], data[6], data[7], data[8], data[9], data[10], data[11],
                                data[12], data[13], data[14], data[15], data[16], data[17], data[18], data[19], data[20],
-                               (crc & 0x00FF), (crc & 0xFF00) >> 8};
+                               crc_h, crc_l};
 
       this->uart_->write_array(uart_data, sizeof(uart_data));
 
