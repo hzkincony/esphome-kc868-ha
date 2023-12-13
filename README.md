@@ -193,12 +193,6 @@ uart:
     baud_rate: 9600
 
 kc868_ha:
-  - id: kc868_ha_1 # Define the first KC868 HA board
-    target_relay_controller_addr: 1
-    switch_adapter_addr: 10
-  - id: kc868_ha_2 # Define the second KC868 HA board
-    target_relay_controller_addr: 1
-    switch_adapter_addr: 11
 
 binary_sensor:
   # Corresponds to the first KC868 HA board
@@ -210,31 +204,26 @@ binary_sensor:
   - platform: kc868_ha
     target_relay_controller_addr: 1
     switch_adapter_addr: 10
-    kc868_ha_id: kc868_ha_1
     bind_output: 2
     name: "binary_sensor 2"
   - platform: kc868_ha
     target_relay_controller_addr: 1
     switch_adapter_addr: 10
-    kc868_ha_id: kc868_ha_1
     bind_output: 3
     name: "binary_sensor 3"
   - platform: kc868_ha
     target_relay_controller_addr: 1
     switch_adapter_addr: 10
-    kc868_ha_id: kc868_ha_1
     bind_output: 4
     name: "binary_sensor 4"
   - platform: kc868_ha
     target_relay_controller_addr: 1
     switch_adapter_addr: 10
-    kc868_ha_id: kc868_ha_1
     bind_output: 5
     name: "binary_sensor 5"
   - platform: kc868_ha
     target_relay_controller_addr: 1
     switch_adapter_addr: 10
-    kc868_ha_id: kc868_ha_1
     bind_output: 6
     name: "binary_sensor 6"
 
@@ -242,37 +231,31 @@ binary_sensor:
   - platform: kc868_ha
     target_relay_controller_addr: 1
     switch_adapter_addr: 11
-    kc868_ha_id: kc868_ha_2
     bind_output: 7
     name: "binary_sensor 7"
   - platform: kc868_ha
     target_relay_controller_addr: 1
     switch_adapter_addr: 11
-    kc868_ha_id: kc868_ha_2
     bind_output: 8
     name: "binary_sensor 8"
   - platform: kc868_ha
     target_relay_controller_addr: 1
     switch_adapter_addr: 11
-    kc868_ha_id: kc868_ha_2
     bind_output: 9
     name: "binary_sensor 9"
   - platform: kc868_ha
     target_relay_controller_addr: 1
     switch_adapter_addr: 11
-    kc868_ha_id: kc868_ha_2
     bind_output: 10
     name: "binary_sensor 10"
   - platform: kc868_ha
     target_relay_controller_addr: 1
     switch_adapter_addr: 11
-    kc868_ha_id: kc868_ha_2
     bind_output: 11
     name: "binary_sensor 11"
   - platform: kc868_ha
     target_relay_controller_addr: 1
     switch_adapter_addr: 11
-    kc868_ha_id: kc868_ha_2
     bind_output: 12
     name: "binary_sensor 12"
 
