@@ -4,6 +4,9 @@
 
 ## An ESP32 board connected to a KC868_HA board
 ```yaml
+logger:
+  baud_rate: 0
+
 external_components:
   - source:
       type: git
@@ -92,6 +95,9 @@ switch:
 
 ## An ESP32 board connected to a KC868_HA board with modified KC868_HA parameters
 ```yaml
+logger:
+  baud_rate: 0
+
 external_components:
   - source:
       type: git
@@ -180,6 +186,9 @@ switch:
 
 ## An ESP32 board connected to multiple KC868_HA boards
 ```yaml
+logger:
+  baud_rate: 0
+
 external_components:
   - source:
       type: git
