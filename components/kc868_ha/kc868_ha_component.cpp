@@ -75,7 +75,7 @@ namespace esphome {
 
     void KC868HaBinarySensor::setup() {
       ESP_LOGD(TAG, "KC868HaBinarySensor::setup");
-      this->publish_state(false);
+      this->publish_initial_state(false);
     }
     void KC868HaBinarySensor::dump_config(){
       ESP_LOGCONFIG(TAG, "KC868HaBinarySensor::dump_config");
@@ -83,6 +83,14 @@ namespace esphome {
 
     void KC868HaSwitch::setup() {
       ESP_LOGD(TAG, "KC868HaSwitch::setup");
+
+      bool initial_state = this->get_initial_state_with_restore_mode().value_or(false);
+
+      if (initial_state) {
+        this->turn_on();
+      } else {
+        this->turn_off();
+      }
     }
     void KC868HaSwitch::dump_config(){
       ESP_LOGCONFIG(TAG, "KC868HaSwitch::dump_config");

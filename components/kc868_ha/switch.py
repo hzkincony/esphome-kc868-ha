@@ -7,7 +7,7 @@ from . import Kc868HaComponent, KC868_HA_ID
 DEPENDENCIES = ['kc868_ha']
 
 kc868_ha_ns = cg.esphome_ns.namespace('kc868_ha')
-kc868HaSwitch = kc868_ha_ns.class_('KC868HaSwitch', switch.Switch)
+kc868HaSwitch = kc868_ha_ns.class_('KC868HaSwitch', cg.Component, switch.Switch)
 
 CONFIG_SCHEMA = switch.SWITCH_SCHEMA.extend({
     cv.GenerateID(): cv.declare_id(kc868HaSwitch),
@@ -20,6 +20,7 @@ CONFIG_SCHEMA = switch.SWITCH_SCHEMA.extend({
 def to_code(config):
     paren = yield cg.get_variable(config[KC868_HA_ID])
     var = cg.new_Pvariable(config[CONF_ID])
+    yield cg.register_component(var, config)
     yield switch.register_switch(var, config)
     cg.add(var.set_target_relay_controller_addr(config["target_relay_controller_addr"]))
     cg.add(var.set_switch_adapter_addr(config["switch_adapter_addr"]))
