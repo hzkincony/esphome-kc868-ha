@@ -7,7 +7,7 @@ from . import Kc868HaComponent, KC868_HA_ID
 DEPENDENCIES = ['kc868_ha']
 
 kc868_ha_ns = cg.esphome_ns.namespace('kc868_ha')
-BinarySensor = kc868_ha_ns.class_('KC868HaBinarySensor', binary_sensor.BinarySensor)
+BinarySensor = kc868_ha_ns.class_('KC868HaBinarySensor', cg.Component, binary_sensor.BinarySensor)
 
 CONFIG_SCHEMA = binary_sensor.BINARY_SENSOR_SCHEMA.extend({
     cv.GenerateID(): cv.declare_id(BinarySensor),

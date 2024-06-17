@@ -7,7 +7,7 @@ from . import Kc868HaComponent, KC868_HA_ID
 DEPENDENCIES = ['kc868_ha']
 
 kc868_ha_ns = cg.esphome_ns.namespace('kc868_ha')
-kc868HaSwitch = kc868_ha_ns.class_('KC868HaSwitch', switch.Switch)
+kc868HaSwitch = kc868_ha_ns.class_('KC868HaSwitch', cg.Component, switch.Switch)
 
 CONFIG_SCHEMA = switch.SWITCH_SCHEMA.extend({
     cv.GenerateID(): cv.declare_id(kc868HaSwitch),
