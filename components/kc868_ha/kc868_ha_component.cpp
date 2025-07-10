@@ -1,10 +1,10 @@
 #include "kc868_ha_component.h"
 #include "math.h"
 
-static const char* const TAG = "kc868_ha"
-
 namespace esphome {
   namespace kc868_ha {
+
+    static const char* const TAG = "kc868_ha";
 
     void KC868HaComponent::setup() {
       ESP_LOGD(TAG, "KC868HaComponent::setup");
