@@ -2,8 +2,6 @@
 
 #include "esphome.h"
 
-#define TAG "kc868_ha.component"
-
 #include "esphome/core/component.h"
 #include "esphome/components/uart/uart.h"
 #include "esphome/components/binary_sensor/binary_sensor.h"
