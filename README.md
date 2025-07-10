@@ -11,7 +11,7 @@ external_components:
   - source:
       type: git
       url: https://github.com/hzkincony/esphome-kc868-ha
-      ref: v3.0.1
+      ref: v3.0.2
 
 uart:
   - id: myuart1
@@ -102,7 +102,7 @@ external_components:
   - source:
       type: git
       url: https://github.com/hzkincony/esphome-kc868-ha
-      ref: v3.0.1
+      ref: v3.0.2
 
 uart:
   - id: myuart1
@@ -193,7 +193,7 @@ external_components:
   - source:
       type: git
       url: https://github.com/hzkincony/esphome-kc868-ha
-      ref: v3.0.1
+      ref: v3.0.2
 
 uart:
   - id: myuart1
