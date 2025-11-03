@@ -9,7 +9,7 @@ DEPENDENCIES = ['kc868_ha']
 kc868_ha_ns = cg.esphome_ns.namespace('kc868_ha')
 kc868HaSwitch = kc868_ha_ns.class_('KC868HaSwitch', cg.Component, switch.Switch)
 
-CONFIG_SCHEMA = switch.SWITCH_SCHEMA.extend({
+CONFIG_SCHEMA = switch.switch_schema(kc868HaSwitch).extend({
     cv.GenerateID(): cv.declare_id(kc868HaSwitch),
     cv.GenerateID(KC868_HA_ID): cv.use_id(Kc868HaComponent),
     cv.Optional("target_relay_controller_addr", default=1): cv.int_range(min=1, max=128),
@@ -17,11 +17,11 @@ CONFIG_SCHEMA = switch.SWITCH_SCHEMA.extend({
     cv.Required("bind_output"): cv.int_range(min=1, max=128),
 }).extend(cv.COMPONENT_SCHEMA)
 
-def to_code(config):
-    paren = yield cg.get_variable(config[KC868_HA_ID])
+async def to_code(config):
+    paren = await cg.get_variable(config[KC868_HA_ID])
     var = cg.new_Pvariable(config[CONF_ID])
-    yield cg.register_component(var, config)
-    yield switch.register_switch(var, config)
+    await cg.register_component(var, config)
+    await switch.register_switch(var, config)
     cg.add(var.set_target_relay_controller_addr(config["target_relay_controller_addr"]))
     cg.add(var.set_switch_adapter_addr(config["switch_adapter_addr"]))
     cg.add(var.set_bind_output(config["bind_output"]))
