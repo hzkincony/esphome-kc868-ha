@@ -75,6 +75,10 @@ namespace esphome {
       uint8_t switch_adapter_addr_;
       std::vector<kc868_ha::KC868HaBinarySensor *> binary_sensors_;
       std::vector<kc868_ha::KC868HaSwitch *> switches_;
+      // RX buffer for header resync (see kc868_ha_component.cpp loop())
+      std::vector<uint8_t> rx_;
+      uint32_t last_rx_ms_{0};
+      void handle_frame_(uint8_t *data);
     };
 
     uint16_t crc16(uint8_t *data, uint8_t length);
